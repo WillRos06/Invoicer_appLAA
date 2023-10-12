@@ -4,7 +4,7 @@ import { v4 as uuidv4 } from "uuid"
 import { AiOutlineDelete } from "react-icons/ai"
 import { AiOutlineEdit } from "react-icons/ai"
 export default function TableForm({ description, setDescription, quantity, setQuantity, price
-  , setPrice, amount, setAmount, list, setList }) {
+  , setPrice, amount, setAmount, list, setList, total, setTotal }) {
 
   const [isEditing, setIsEditing] = useState(false)
   const handleSubmit = (e) => {
@@ -21,6 +21,7 @@ export default function TableForm({ description, setDescription, quantity, setQu
     setPrice("")
     setAmount("")
     setList([...list, newItems])
+    setIsEditing(false)
     console.log(list)
   }
 
@@ -30,8 +31,21 @@ export default function TableForm({ description, setDescription, quantity, setQu
     }
     calculateAmount(amount)
   }, [amount, price, quantity])
+
+  useEffect(() => {
+    let rows = document.querySelectorAll(".amount")
+    let sum = 0
+
+    for (let i = 0; i < rows.length; i++) {
+      if (rows[i].className === "amount") {
+        sum += isNaN(rows[i].innerHTML) ? 0 : parseInt(rows[i].innerHTML)
+        setTotal(sum)
+      }
+    }
+  })
   const editRow = (id) => {
     const editingRow = list.find((row) => row.id === id)
+    setList(list.filter((row) => row.id !== id))
     setIsEditing(true)
     setDescription(editingRow.description)
     setQuantity(editingRow.setQuantity)
@@ -70,7 +84,7 @@ export default function TableForm({ description, setDescription, quantity, setQu
         </div>
         <button type='submit' className="mb-5 bg-blue-500 text-white font-bold py-2 px-8 
         rounded shadow border-2 border-blue-500 hover:bg-transparent hover:text-blue-500 
-        transition-all duration-300">Agregar Artículo a la tabla</button>
+        transition-all duration-300">{isEditing ? "Editando artículo" : "Agregar artículo"}</button>
       </form>
 
       <table width="100%" className='mb-10'>
@@ -88,8 +102,8 @@ export default function TableForm({ description, setDescription, quantity, setQu
               <tr>
                 <td>{description}</td>
                 <td>{quantity}</td>
-                <td>{price}</td>
-                <td>{amount}</td>
+                <td>${price}</td>
+                <td className='amount'>{amount}</td>
                 <td><button onClick={() => deleteRow(id)}><AiOutlineDelete className='text-red-500 font-bold text-xl'></AiOutlineDelete></button></td>
                 <td><button onClick={() => editRow(id)}><AiOutlineEdit className='text-green-500 font-bold text-xl'></AiOutlineEdit></button></td>
               </tr>
@@ -97,6 +111,10 @@ export default function TableForm({ description, setDescription, quantity, setQu
           </React.Fragment>
         ))}
       </table>
+
+      <div>
+        <h2 className='flex items-end justify-end text-gray-800 text-4xl'>Total: {total.toLocaleString()}</h2>
+      </div>
     </>
   )
 }
