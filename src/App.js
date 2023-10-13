@@ -38,6 +38,7 @@ function App() {
   const handleprint = () => {
     window.print()
   }
+  
   return (
     <>
       {/* name, address, ema  il, phone, bank name, bank account number, website client name,
@@ -224,8 +225,8 @@ function App() {
                   <div className="flex flex-col">
                     <label htmlFor="paymethod">Método de pago</label>
                     <article className="md:grid grid-cols-2">
-                      <button ><BsCreditCard onClick={() => setPayMethod(0)} className='text-gray-500 font-bold text-6xl'></BsCreditCard></button>
-                      <button ><FaMoneyBillWave onClick={() => setPayMethod(1)} className='text-gray-500 font-bold text-6xl'></FaMoneyBillWave></button>
+                      <button ><BsCreditCard onClick={() => setPayMethod("Transferencia")} className='text-gray-500 font-bold text-6xl'></BsCreditCard></button>
+                      <button ><FaMoneyBillWave onClick={() => setPayMethod("Efectivo")} className='text-gray-500 font-bold text-6xl'></FaMoneyBillWave></button>
                     </article>
                   </div>
                 </article>
