@@ -225,10 +225,10 @@ function App() {
                     <label htmlFor="paymethod">Método de pago</label>
                     <article className="md:grid grid-cols-2">
                       <button id="creditcard" htmlFor="paymethod" className={paymethod == "Transferencia" ? 'text-yellow-500 font-bold text-6xl' : 'text-gray-500 font-bold text-6xl'}>
-                        <BsCreditCard onClick={() => { setPayMethod("Transferencia"); setIsSelected(2); }} ></BsCreditCard></button>
+                        <BsCreditCard onClick={() => { setPayMethod("Transferencia");}} ></BsCreditCard></button>
 
                       <button id="money" htmlFor="paymethod" className={paymethod == "Efectivo" ? 'text-green-500 font-bold text-6xl' : 'text-gray-500 font-bold text-6xl'}>
-                        <FaMoneyBillWave onClick={() => { setPayMethod("Efectivo"); setIsSelected(1); }} ></FaMoneyBillWave></button>
+                        <FaMoneyBillWave onClick={() => { setPayMethod("Efectivo");}} ></FaMoneyBillWave></button>
                     </article>
                   </div>
                 </article>
