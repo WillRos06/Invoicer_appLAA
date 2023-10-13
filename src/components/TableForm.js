@@ -9,20 +9,25 @@ export default function TableForm({ description, setDescription, quantity, setQu
   const [isEditing, setIsEditing] = useState(false)
   const handleSubmit = (e) => {
     e.preventDefault()
-    const newItems = {
-      id: uuidv4(),
-      description,
-      quantity,
-      price,
-      amount
+
+    if(!description & !quantity & !price){
+      alert("Por favor llenar todos los campos para agregar un artículo")
+    }else{
+      const newItems = {
+        id: uuidv4(),
+        description,
+        quantity,
+        price,
+        amount
+      }
+      setDescription("")
+      setQuantity("")
+      setPrice("")
+      setAmount("")
+      setList([...list, newItems])
+      setIsEditing(false)
+      console.log(list)
     }
-    setDescription("")
-    setQuantity("")
-    setPrice("")
-    setAmount("")
-    setList([...list, newItems])
-    setIsEditing(false)
-    console.log(list)
   }
 
   useEffect(() => {

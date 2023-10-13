@@ -39,10 +39,10 @@ function App() {
       {/* name, address, ema  il, phone, bank name, bank account number, website client name,
      client address, inoice number, invoice date, due date, notes*/}
       <main className="m-5 p-5 md:max-w-xl md:mx-auto lg:max-w-2xl xl:max-w-4xl bg-white rounded shadow">
-        <ReactToPrint trigger={() => <button className="bg-blue-500 mb-5 text-white font-bold py-2 px-8 rounded shadow border-2 border-blue-500 hover:bg-transparent hover:text-blue-500 transition-all duration-300">Imprimir / Descargar</button>}
-          content={() => componentRef.current} />
         {showInvoice ?
           <>
+            <ReactToPrint trigger={() => <button className="bg-blue-500 ml-5 text-white font-bold py-2 px-8 rounded shadow border-2 border-blue-500 hover:bg-transparent hover:text-blue-500 transition-all duration-300">Imprimir / Descargar</button>}
+              content={() => componentRef.current} />
             <div ref={componentRef} className="p-5">
               <Head handleprint={handleprint} />
               <MainDetails name={name} address={address} />
