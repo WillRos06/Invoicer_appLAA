@@ -7,8 +7,10 @@ import MainDetails from "./components/MainDetails"
 import ClientDetails from "./components/ClientDetails"
 import Dates from "./components/Dates"
 import TableForm from "./components/TableForm"
+import Method from "./components/Method"
 import ReactToPrint from "react-to-print"
-
+import { BsCreditCard } from "react-icons/bs"
+import { FaMoneyBillWave } from "react-icons/fa";
 function App() {
   const [showInvoice, setShowInvoice] = useState(false)
   const [name, setName] = useState("")
@@ -30,14 +32,16 @@ function App() {
   const [amount, setAmount] = useState("")
   const [list, setList] = useState([])
   const [total, setTotal] = useState(0)
+  const [paymethod, setPayMethod] = useState(0)
   const componentRef = useRef()
+
   const handleprint = () => {
     window.print()
   }
   return (
     <>
       {/* name, address, ema  il, phone, bank name, bank account number, website client name,
-     client address, inoice number, invoice date, due date, notes*/}
+     client address, invoice number, invoice date, due date, notes*/}
       <main className="m-5 p-5 md:max-w-xl md:mx-auto lg:max-w-2xl xl:max-w-4xl bg-white rounded shadow">
         {showInvoice ?
           <>
@@ -48,6 +52,9 @@ function App() {
               <MainDetails name={name} address={address} />
               <ClientDetails clientName={clientName} clientAddress={clientAddress} />
               <Dates invoiceNumber={invoiceNumber} invoiceDate={invoiceDate} dueDate={dueDate} />
+              <Method
+                paymethod={paymethod}
+              />
               <Table
                 description={description}
                 quantity={quantity}
@@ -67,7 +74,6 @@ function App() {
                 bankAccount={bankAccount}
                 bankName={bankName}
               />
-
             </div>
             <button onClick={() => setShowInvoice(false)} className="mt-5 bg-blue-500 text-white font-bold py-2 px-8 rounded shadow border-2 border-blue-500 hover:bg-transparent hover:text-blue-500 transition-all duration-300">
               Editar información
@@ -214,6 +220,13 @@ function App() {
                       value={dueDate}
                       onChange={(e) => setDuedate(e.target.value)}
                     />
+                  </div>
+                  <div className="flex flex-col">
+                    <label htmlFor="paymethod">Método de pago</label>
+                    <article className="md:grid grid-cols-2">
+                      <button ><BsCreditCard onClick={() => setPayMethod(0)} className='text-gray-500 font-bold text-6xl'></BsCreditCard></button>
+                      <button ><FaMoneyBillWave onClick={() => setPayMethod(1)} className='text-gray-500 font-bold text-6xl'></FaMoneyBillWave></button>
+                    </article>
                   </div>
                 </article>
                 <article>
