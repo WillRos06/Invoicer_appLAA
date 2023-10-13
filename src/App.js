@@ -117,7 +117,7 @@ function App() {
                     />
                   </div>
                   <div className="flex flex-col">
-                    <label htmlFor="website">Página web</label>
+                    <label htmlFor="website">Instagram</label>
                     <input type="url"
                       name="website"
                       id="website"

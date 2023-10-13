@@ -26,7 +26,7 @@ export default function Table({ list, total }) {
         ))}
       </table>
       <div>
-        <h2 className=' flex items-end justify-end text-gray-800 text-4xl'>Total: {total.toLocaleString()}</h2>
+        <h2 className=' flex items-end justify-end text-gray-800 text-4xl'>Total: ${total.toLocaleString()}</h2>
       </div>
     </>
   )
