@@ -7,14 +7,12 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background-color: #f1f1f1;
 }
-
 label {
   margin-bottom: 0.3rem;
   font-size: 1.05rem;
   font-weight: 600;
   color: j#886a6a;
 }
-
 input,
 textarea {
   background-color: #f1f1f1;
@@ -23,11 +21,9 @@ textarea {
   margin-bottom: 2rem;
   color: #6d6c6c;
 }
-
 button {
   user-select: none;
 }
-
 .footer li {
   margin: 0.5rem 0.2rem;
 }

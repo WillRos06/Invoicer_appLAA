@@ -44,7 +44,8 @@ function App() {
      client address, invoice number, invoice date, due date, notes*/}
       <main className="m-5 p-5 md:max-w-xl md:mx-auto lg:max-w-2xl xl:max-w-4xl bg-white rounded shadow">
         {showInvoice ?
-          <>
+          <div>
+            
             <ReactToPrint trigger={() => <button className="bg-green-500 ml-5 text-white font-bold py-2 px-8 rounded shadow border-2 border-green-500 hover:bg-transparent hover:text-green-500 transition-all duration-300">Imprimir / Descargar</button>}
               content={() => componentRef.current} />
             <div ref={componentRef} className="p-5">
@@ -77,8 +78,8 @@ function App() {
             </div>
             <button onClick={() => setShowInvoice(false)} className="ml-5 mt-5 bg-blue-500 text-white font-bold py-2 px-8 rounded shadow border-2 border-blue-500 hover:bg-transparent hover:text-blue-500 transition-all duration-300">
               Editar información
-            </button></> : (
-            <>
+            </button></div> : (
+            <div>
               <div className="flex flex-col justify-center">
                 <article className="md:grid grid-cols-2 gap-10">
                   <div className="aflex flex-col">
@@ -253,7 +254,7 @@ function App() {
                 para el cliente" value={notes} onChange={(e) => setNotes(e.target.value)}></textarea>
                 <button onClick={() => setShowInvoice(true)} className="bg-blue-500 text-white font-bold py-2 px-8 rounded shadow border-2 border-blue-500 hover:bg-transparent hover:text-blue-500 transition-all duration-300">Ver factura</button>
               </div>
-            </>
+            </div>
           )}
       </main>
     </>
