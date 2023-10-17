@@ -5,7 +5,7 @@ export default function Table({ list, total }) {
     <>
       <table width="100%" className='mb-10'>
         <thead>
-          <tr className='bg-green-400 p-1'>
+          <tr className='bg-purple-300'>
             <td className='font-bold'>Artículo</td>
             <td className='font-bold'>Cantidad</td>
             <td className='font-bold'>Precio unitario</td>
